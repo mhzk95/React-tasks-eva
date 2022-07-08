@@ -1,0 +1,25 @@
+@import '../../utilities/variable';
+
+.Navbar{
+    background-color:$primary-color;
+    color: $lightShade-2;
+    padding: 10px 100px;
+    display: flex;
+    justify-content: space-between;
+    .logo{
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    .menu{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .menuItem{
+            cursor: pointer;
+        }
+    }
+    .link{
+         color: $lightShade-2;
+         text-decoration: none;
+    }
+}
