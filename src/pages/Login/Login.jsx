@@ -37,15 +37,6 @@ const Login = () => {
     // if (user.email === '') return setUser({ ...user, errorEmail: true })
     // if (user.password === '') return setUser({ ...user, errorPassword: true })
 
-    let formData = new FormData()
-    formData.append('username', 'testuser001eva@gmail.com')
-    formData.append('password', 'Vinu@0468235')
-    formData.append('client_id', 'Cg6AwcBmbEtD0mF0smvZz68VVwZ1VV2VSFRfWoUr')
-    formData.append(
-      'client_secret',
-      '1yXxXarBiP7jl4ZcPgnbSsCmxCtxzybNQYsgiSaw0M21h97O9oQ606LpX2kSfTYW7G0sHFXaoOlxEj4JsSd7OzxzitfRPzXDTCDFwZVECBC1OEEIKbA1OtNoH2MbpPD4'
-    )
-    formData.append('grant_type', 'password')
 
     let userData =        {client_id: 'Cg6AwcBmbEtD0mF0smvZz68VVwZ1VV2VSFRfWoUr',
     client_secret: '1yXxXarBiP7jl4ZcPgnbSsCmxCtxzybNQYsgiSaw0M21h97O9oQ606LpX2kSfTYW7G0sHFXaoOlxEj4JsSd7OzxzitfRPzXDTCDFwZVECBC1OEEIKbA1OtNoH2MbpPD4',
