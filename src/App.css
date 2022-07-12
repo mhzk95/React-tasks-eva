@@ -26,6 +26,7 @@
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -81,6 +82,10 @@
   border-radius: 8px;
   margin-top: 40px;
   font-size: 1.3rem;
+}
+.login .authError {
+  color: rgb(227, 101, 101);
+  padding: 20px;
 }
 
 .container {

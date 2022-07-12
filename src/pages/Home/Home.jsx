@@ -1,29 +1,25 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Nav from '../../components/navbar/Nav'
-import {useDispatch,useSelector} from 'react-redux'
-import {getUser} from '../../redux/slice'
+import {useDispatch, useSelector} from 'react-redux'
+
 
 const Home = () => {
+ const userData = useSelector(state => state.auth.userDetails.data)
+const {id,email,profile,} = userData?.user
+const {first_name,last_name,phone} = profile
 
-  const dispatch = useDispatch()
-  const [user] = useSelector(state => state.user.userDetails)
-  const id = useSelector(state => state.user.id)
 
-  useEffect(() => {
-    dispatch(getUser(id))
-  },[])
-
-  console.log();
+console.log(userData,"userData");
 
   return (
     <>
     <Nav />
     <div className='container'>
         <h1>Home Page</h1>
-        <p>Email : {user?.email}</p>
-        <p>Name : {user?.name}</p>
-        <p>ID : {user?.id}</p>
-        <p>User Role : {user?.user_role}</p>
+        <p>Email : {email}</p>
+        <p>Name : {`${first_name} ${last_name}`}</p>
+        <p>ID : {id}</p>
+        <p>phone : {phone}</p>
     </div>
     </>
     

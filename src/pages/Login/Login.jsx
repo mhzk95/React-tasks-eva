@@ -1,17 +1,19 @@
-import axios from 'axios'
-import { useState } from 'react'
+
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { setUsers } from '../../redux/slice'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
+import {login} from '../../redux/action'
 
 const Login = () => {
   const dispatch = useDispatch()
+  const data = useSelector(state => state.auth)
   const [user, setUser] = useState({
     email: '',
     password: '',
     errorEmail: false,
     errorPassword: false,
   })
+  const [error,setError] = useState('')
 
   let navigate = useNavigate()
 
@@ -32,31 +34,26 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // if (user.email === '' && user.password === '')
-    //   return setUser({ ...user, errorEmail: true, errorPassword: true })
-    // if (user.email === '') return setUser({ ...user, errorEmail: true })
-    // if (user.password === '') return setUser({ ...user, errorPassword: true })
+    if (user.email === '' && user.password === '')
+      return setUser({ ...user, errorEmail: true, errorPassword: true })
+    if (user.email === '') return setUser({ ...user, errorEmail: true })
+    if (user.password === '') return setUser({ ...user, errorPassword: true })
 
-
-    let userData =        {client_id: 'Cg6AwcBmbEtD0mF0smvZz68VVwZ1VV2VSFRfWoUr',
-    client_secret: '1yXxXarBiP7jl4ZcPgnbSsCmxCtxzybNQYsgiSaw0M21h97O9oQ606LpX2kSfTYW7G0sHFXaoOlxEj4JsSd7OzxzitfRPzXDTCDFwZVECBC1OEEIKbA1OtNoH2MbpPD4',
-    grant_type: 'password',
-    password: "Vinu@04682353924",
-    username:'testuser001eva@gmail.com'}
-
-    let config = {
-      method: 'post',
-      url: 'https://api-65-0-106-20.cormentor.com/api/v1/login',
-      data: formData,
-    }
-
-    axios
-      .post('https://api-65-0-106-20.cormentor.com/api/v1/login',userData)
-      .then((response) => console.log(response.data))
-      .catch((err) => console.log(err))
-    // dispatch(setUsers(2))
+    dispatch(login({
+      username:user.email,
+      password:user.password
+    }))
     // navigate('/home')
   }
+  useEffect(() => {
+    console.log(data.userDetails?.status)
+    if(data.userDetails?.status){
+      navigate('/home')
+    }else setError(data.userDetails?.message)
+
+
+  },[data])
+
 
   return (
     <div className='login'>
@@ -92,6 +89,7 @@ const Login = () => {
           <button className='loginButton'>SIGN IN</button>
         </form>
       </div>
+      <p className='authError' >{error}</p>
     </div>
   )
 }
