@@ -34,24 +34,22 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    // Form validaiton.
     if (user.email === '' && user.password === '')
       return setUser({ ...user, errorEmail: true, errorPassword: true })
     if (user.email === '') return setUser({ ...user, errorEmail: true })
     if (user.password === '') return setUser({ ...user, errorPassword: true })
-
+    // On successfull validation.
     dispatch(login({
       username:user.email,
       password:user.password
     }))
-    // navigate('/home')
   }
   useEffect(() => {
     console.log(data.userDetails?.status)
     if(data.userDetails?.status){
       navigate('/home')
     }else setError(data.userDetails?.message)
-
-
   },[data])
 
 

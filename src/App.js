@@ -7,6 +7,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 
 import {useSelector} from 'react-redux'
+import AboutFunction from './pages/AboutFunction'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/' element={<Login  />} />
             <Route path='/home' element={user ? <Home /> : <Login />} />
             <Route path='/about' element={<About />} />
+            <Route path='/aboutFunction' element={<AboutFunction />} />
             <Route path='/contact' element={<Contact />} />
           </Routes>
       </Router>

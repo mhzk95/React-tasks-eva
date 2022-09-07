@@ -1,8 +1,9 @@
-import {LOGIN_SUCCESS,LOGIN_FAILURE,LOGIN_START} from './types'
+import {LOGIN_SUCCESS,LOGIN_FAILURE,LOGIN_START, GET_API_DATA} from './types'
 
 const initialState = {
     loading:true,
-    userDetails:null
+    userDetails:null,
+    apiData:null
 }
  
 const authReducer = (state={...initialState},action) => {
@@ -13,6 +14,8 @@ const authReducer = (state={...initialState},action) => {
             return {loading:false,userDetails:action.payload}
         case LOGIN_FAILURE:
             return {...state,loading:false}
+        case GET_API_DATA:
+            return {...state,apiData:action.payload}
         default: return state
     }
 }

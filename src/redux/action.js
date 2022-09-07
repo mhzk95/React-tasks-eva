@@ -1,11 +1,16 @@
 import axios from 'axios'
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGIN_START } from './types'
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGIN_START,
+  GET_API_DATA,
+} from './types'
 
 let userData = {
   client_id: 'Cg6AwcBmbEtD0mF0smvZz68VVwZ1VV2VSFRfWoUr',
   client_secret:
     '1yXxXarBiP7jl4ZcPgnbSsCmxCtxzybNQYsgiSaw0M21h97O9oQ606LpX2kSfTYW7G0sHFXaoOlxEj4JsSd7OzxzitfRPzXDTCDFwZVECBC1OEEIKbA1OtNoH2MbpPD4',
-  grant_type: 'password'
+  grant_type: 'password',
 }
 
 export const login =
@@ -19,11 +24,18 @@ export const login =
         password,
       })
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
         dispatch({ type: LOGIN_FAILURE })
       })
   }
+
+export const getApiData = () => (dispatch) => {
+  axios
+    .get('https://accounts.reachmystation.com/api/getAboutUs')
+    .then((res) => dispatch({ type: GET_API_DATA, payload: res.data }))
+    .catch((err) => console.log(err))
+}
