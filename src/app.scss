@@ -1,0 +1,17 @@
+.observer_container{
+    height: 250vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 200px;
+
+    .content_wrapper{  
+        border: 1px solid rgb(75, 75, 75);
+        .content{
+            font-size: 20px;
+        }
+    }
+    .second_element{
+        margin-top: 500px;
+    }
+}

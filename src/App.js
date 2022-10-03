@@ -1,12 +1,14 @@
 
 import './App.css'
+import ReactObserver from './pages/ReactObserver'
 
 function App() {
   return (
     <div className='App'>
-      Hello world
+      <ReactObserver />
     </div>
   )
 }
 
 export default App
+
