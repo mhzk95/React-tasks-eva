@@ -1,10 +1,12 @@
-
-import './App.css'
+import { useState } from "react"
 
 function App() {
+  const[name,setName] = useState('sakeer');
+
   return (
     <div className='App'>
-      Hello world
+      {name}
+      <span onClick={handleClick}></span>
     </div>
   )
 }
